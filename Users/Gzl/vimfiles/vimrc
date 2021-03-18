@@ -39,11 +39,7 @@ function MyDiff()
   endif
 endfunction
 
-" some theme changes for gvim
-" choices of colorscheme: slate, desert, evening, sonofobsidian
-colorscheme slate
 set number
-set guifont=Consolas:h12
 
 " Spaces & Tabs
 set tabstop=2       " number of visual spaces per TAB
