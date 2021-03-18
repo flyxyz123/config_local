@@ -6,7 +6,6 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
-Function config 
-{
-  git --git-dir=G:\ComputerStudy\configs\.myconfigs\ --work-tree=C:\ $args
+Function config {
+  git --git-dir=G:\ComputerStudy\configs\.myconfigs\ --work-tree=$HOME\ $args
 }
