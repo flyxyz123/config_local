@@ -1,4 +1,0 @@
-" some theme changes for gvim
-" choices of colorscheme: slate, desert, evening, sonofobsidian
-colorscheme slate
-set guifont=Consolas:h12
