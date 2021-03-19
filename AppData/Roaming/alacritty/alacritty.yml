@@ -820,8 +820,9 @@ key_bindings:
 #  args:
 #  - --login
 
-#seems not working
-#  startup_mode: Maximized
+window:
+#  decorations: none
+  startup_mode: Maximized
 
 font:
   size: 14
