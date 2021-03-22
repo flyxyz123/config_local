@@ -820,13 +820,13 @@ key_bindings:
 #  args:
 #  - --login
 
-window:
+#window:
 #  decorations: none
-  startup_mode: Maximized
+#  startup_mode: Maximized
 
 font:
   size: 14
 
-background_opacity: 0.6
+#background_opacity: 0.6
 
-working_directory: G:\
+#working_directory: G:\
