@@ -47,3 +47,5 @@ set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\[%{&fileformat}\]
 set statusline+=\ %p%%      "not sure diff. bet. p and P
 set statusline+=\ %l:%c
+
+" some nonsense for testing
