@@ -40,7 +40,7 @@ map <C-l> <C-w>l
 set ignorecase
 set smartcase
 
-set statusline+=%F          "can also 1CTRL+G to show full path
+set statusline+=%f          "can also 1CTRL+G to show full path
 set statusline+=%=          "left/right separator
 set statusline+=\ %y
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
