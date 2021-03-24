@@ -38,7 +38,6 @@ set ignorecase
 set smartcase
 
 " default statusline:set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-
 set statusline+=%<
 set statusline+=%f          " %F or 1CTRL+G to show full path
 set statusline+=\ %m
