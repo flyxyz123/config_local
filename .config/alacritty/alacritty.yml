@@ -1,3 +1,8 @@
+font:
+  size: 14
+
+background_opacity: 0.6
+
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Import additional configuration files
@@ -810,23 +815,3 @@ key_bindings:
   #log_level: Warn
 
   # Print all received window events.
-
-# don't use bash as defult shell on windows, / and \ directory conflict is insane, use powershell 
-#shell:
-##  program: D:\Program Files\Scoop\apps\git\2.30.1.windows.1\bin\bash.exe
-##  program: D:\Program Files\Scoop\apps\git\2.30.1.windows.1\usr\bin\bash.exe
-#  choose one. differences between usr\bin\bash and bin\bash maybe:
-#  https://stackoverflow.com/questions/56839307/adding-git-bash-to-the-new-windows-terminal#comment103444902_58027771
-#  args:
-#  - --login
-
-#window:
-#  decorations: none
-#  startup_mode: Maximized
-
-font:
-  size: 14
-
-#background_opacity: 0.6
-
-#working_directory: G:\
