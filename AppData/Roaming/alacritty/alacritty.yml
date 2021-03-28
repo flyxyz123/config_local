@@ -1,11 +1,10 @@
 import:
-  - ~\.config\alacritty\alacritty.yml
+    - ~\.config\alacritty\alacritty.yml
 
 shell:
-  program: C:\Program Files\PowerShell\7\pwsh.exe 
-  args:
-    - --login
-
+    program: D:\Program Files\Scoop\apps\pwsh\current\pwsh.exe 
+    args:
+        - --login
 # don't use bash as defult shell on windows, / and \ directory conflict is insane, use powershell 
 #shell:
 ##  program: D:\Program Files\Scoop\apps\git\2.30.1.windows.1\bin\bash.exe
