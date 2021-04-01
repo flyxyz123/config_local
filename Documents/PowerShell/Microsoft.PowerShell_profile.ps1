@@ -7,7 +7,3 @@ if (Test-Path($ChocolateyProfile)) {
 Function config {
     git --git-dir=G:\ComputerStudy\configs\.myconfigs\ --work-tree=$HOME\ $args
 }
-
-Function alacritty {
-    alacritty.exe --config-file $env:USERPROFILE\.config\alacritty\alacritty.yml $args
-}
