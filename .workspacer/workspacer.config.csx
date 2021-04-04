@@ -23,7 +23,7 @@ Action<IConfigContext> doConfig = (context) =>
 		DefaultWidgetForeground = Color.White,
 		DefaultWidgetBackground = Color.Black,
 		Background = Color.Black,
-		LeftWidgets = () => new IBarWidget[] { new WorkspaceWidget(), new TextWidget(": "), new TitleWidget() },
+		LeftWidgets = () => new IBarWidget[] { new WorkspaceWidget(), new TextWidget(": "), new TitleWidget(){IsShortTitle = true} },
 		RightWidgets = () => new IBarWidget[] { new TimeWidget(1000, "ddd, M/dd/yyyy | h:mm tt"), new ActiveLayoutWidget() },
 	});	
 
@@ -31,14 +31,29 @@ Action<IConfigContext> doConfig = (context) =>
 
 	var actionMenu = context.AddActionMenu();
 	
+	context.WindowRouter.AddFilter(
+		(window) => !window.Title.Contains("VPN"));
+	context.WindowRouter.AddFilter(
+		(window) => !window.Title.Contains("Snip"));
+	
 	context.WorkspaceContainer.CreateWorkspaces("1", "2", "3", "4", "5");
-	context.WindowRouter.AddRoute((window) => window.Title.Contains("VLC media player") ? context.WorkspaceContainer["5"] : null);
-	context.WindowRouter.AddRoute((window) => window.Title.Contains("qBittorrent") ? context.WorkspaceContainer["5"] : null);
-	context.WindowRouter.AddRoute((window) => window.Title.Contains("网易云音乐") ? context.WorkspaceContainer["5"] : null);
-	context.WindowRouter.AddRoute((window) => window.Title.Contains("Steam") ? context.WorkspaceContainer["4"] : null);
+	context.WindowRouter.AddRoute(
+		(window) => window.Title.Contains("VLC media player") ? 
+		context.WorkspaceContainer["5"] : null);
+	context.WindowRouter.AddRoute(
+		(window) => window.Title.Contains("qBittorrent") ? 
+		context.WorkspaceContainer["5"] : null);
+	context.WindowRouter.AddRoute(
+		(window) => window.Title.Contains("netease cloud music") ?
+		context.WorkspaceContainer["5"] : null);
+	context.WindowRouter.AddRoute(
+		(window) => window.Title.Contains("Steam") ? 
+		context.WorkspaceContainer["4"] : null);
 	
 	KeyModifiers mod = KeyModifiers.Alt;	
 	context.Keybinds.Unsubscribe(mod | KeyModifiers.LShift, Keys.C);
-	context.Keybinds.Subscribe(mod, Keys.C, () => context.Workspaces.FocusedWorkspace.CloseFocusedWindow(), "close focused window");
+	context.Keybinds.Subscribe(mod, Keys.C, 
+		() => context.Workspaces.FocusedWorkspace.CloseFocusedWindow(),
+		"close focused window");
 };
 return doConfig;
