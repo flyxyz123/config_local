@@ -31,10 +31,12 @@ Action<IConfigContext> doConfig = (context) =>
 
 	var actionMenu = context.AddActionMenu();
 	
-	context.WindowRouter.AddFilter(
-		(window) => !window.Title.Contains("VPN"));
+	//context.WindowRouter.AddFilter(
+	//	(window) => !window.Title.Contains("VPN"));
 	context.WindowRouter.AddFilter(
 		(window) => !window.Title.Contains("Snip"));
+	context.WindowRouter.AddFilter(
+		(window) => !window.Title.Contains("Steam"));
 	
 	context.WorkspaceContainer.CreateWorkspaces("1", "2", "3", "4", "5");
 	context.WindowRouter.AddRoute(
@@ -46,9 +48,6 @@ Action<IConfigContext> doConfig = (context) =>
 	context.WindowRouter.AddRoute(
 		(window) => window.Title.Contains("netease cloud music") ?
 		context.WorkspaceContainer["5"] : null);
-	context.WindowRouter.AddRoute(
-		(window) => window.Title.Contains("Steam") ? 
-		context.WorkspaceContainer["4"] : null);
 	
 	KeyModifiers mod = KeyModifiers.Alt;	
 	context.Keybinds.Unsubscribe(mod | KeyModifiers.LShift, Keys.C);
