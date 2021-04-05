@@ -37,7 +37,9 @@ Action<IConfigContext> doConfig = (context) =>
 		(window) => !window.Title.Contains("Snip"));
 	context.WindowRouter.AddFilter(
 		(window) => !window.Title.Contains("Steam"));
-	
+	context.WindowRouter.AddFilter(
+		(window) => !window.Title.Contains("Zoom"));
+
 	context.WorkspaceContainer.CreateWorkspaces("1", "2", "3", "4", "5");
 	context.WindowRouter.AddRoute(
 		(window) => window.Title.Contains("VLC media player") ? 
