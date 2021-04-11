@@ -39,6 +39,8 @@ Action<IConfigContext> doConfig = (context) =>
 		(window) => !window.Title.Contains("Steam"));
 	context.WindowRouter.AddFilter(
 		(window) => !window.Title.Contains("Zoom"));
+	context.WindowRouter.AddFilter(
+		(window) => !window.Title.Contains("Picture-in-Picture"));
 
 	context.WorkspaceContainer.CreateWorkspaces("1", "2", "3", "4", "5");
 	context.WindowRouter.AddRoute(
