@@ -31,28 +31,28 @@ Action<IConfigContext> doConfig = (context) =>
 
 	var actionMenu = context.AddActionMenu();
 	
-	//context.WindowRouter.AddFilter(
-	//	(window) => !window.Title.Contains("VPN"));
-	context.WindowRouter.AddFilter(
-		(window) => !window.Title.Contains("Snip"));
-	context.WindowRouter.AddFilter(
-		(window) => !window.Title.Contains("Steam"));
-	context.WindowRouter.AddFilter(
-		(window) => !window.Title.Contains("Zoom"));
-	context.WindowRouter.AddFilter(
-		(window) => !window.Title.Contains("Picture-in-Picture"));
+	context.WindowRouter.AddFilter(w => !w.Title.Contains("Snip"));
+	context.WindowRouter.AddFilter(w => !w.Title.Contains("Steam"));
+	context.WindowRouter.AddFilter(w => !w.Title.Contains("Zoom"));
+	context.WindowRouter.AddFilter(w => !w.Title.Contains("Picture-in-Picture"));
+    // below two lines are from https://github.com/Zweihander-Main/zweidotfiles/blob/master/dot_workspacer/workspacer.config.csx
+	context.WindowRouter.AddFilter(w => !w.Class.Equals("#32770")); // Deletion dialog
+    context.WindowRouter.AddFilter(w => !w.Class.Equals("OperationStatusWindow")); // Copying dialog
 
 	context.WorkspaceContainer.CreateWorkspaces("1", "2", "3", "4", "5");
 	context.WindowRouter.AddRoute(
-		(window) => window.Title.Contains("VLC media player") ? 
-		context.WorkspaceContainer["5"] : null);
+		w => w.Title.Contains("VLC media player") ? 
+		context.WorkspaceContainer["4"] : null);
 	context.WindowRouter.AddRoute(
-		(window) => window.Title.Contains("qBittorrent") ? 
-		context.WorkspaceContainer["5"] : null);
+		w => w.Title.Contains("qBittorrent") ? 
+		context.WorkspaceContainer["4"] : null);
 	context.WindowRouter.AddRoute(
-		(window) => window.Title.Contains("netease cloud music") ?
+		w => w.ProcessFileName.Equals("cloudmusic.exe") ?
+		context.WorkspaceContainer["4"] : null);
+	context.WindowRouter.AddRoute(
+		w => w.Title.Equals("netease cloud music unblocked") ?
 		context.WorkspaceContainer["5"] : null);
-	
+
 	KeyModifiers mod = KeyModifiers.Alt;	
 	context.Keybinds.Unsubscribe(mod | KeyModifiers.LShift, Keys.C);
 	context.Keybinds.Subscribe(mod, Keys.C, 
