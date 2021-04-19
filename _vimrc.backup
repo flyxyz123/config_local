@@ -1,0 +1,160 @@
+" An example for a vimrc file.
+"
+" Maintainer:	Bram Moolenaar <Bram@vim.org>
+" Last change:	2019 Jan 26
+"
+" To use it, copy it to
+"     for Unix and OS/2:  ~/.vimrc
+"	      for Amiga:  s:.vimrc
+"  for MS-DOS and Win32:  $VIM\_vimrc
+"	    for OpenVMS:  sys$login:.vimrc
+
+"" When started as "evim", evim.vim will already have done these settings, bail
+"" out.
+"if v:progname =~? "evim"
+"  finish
+"endif
+
+" Get the defaults that most users want.
+source $VIMRUNTIME/defaults.vim
+
+"if has("vms")
+"  set nobackup		" do not keep a backup file, use versions instead
+"else
+"  set backup		" keep a backup file (restore to previous version)
+"  if has('persistent_undo')
+"    set undofile	" keep an undo file (undo changes after closing)
+"  endif
+"endif
+
+if &t_Co > 2 || has("gui_running")
+  " Switch on highlighting the last used search pattern.
+  set hlsearch
+endif
+
+"" Put these in an autocmd group, so that we can delete them easily.
+"augroup vimrcEx
+"  au!
+"
+"  " For all text files set 'textwidth' to 78 characters.
+"  autocmd FileType text setlocal textwidth=78
+"augroup END
+"
+"" Add optional packages.
+""
+"" The matchit plugin makes the % command work better, but it is not backwards
+"" compatible.
+"" The ! means the package won't be loaded right away but when plugins are
+"" loaded during initialization.
+"if has('syntax') && has('eval')
+"  packadd! matchit
+"endif
+"set shell=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe\ -ExecutionPolicy\ Bypass
+
+" if without, nvim with no file will give error because it's not defined?
+let fenc_bef = 0
+
+" change cursor type
+"Mode Settings
+
+let &t_SI.="\e[5 q" "SI = INSERT mode
+let &t_SR.="\e[4 q" "SR = REPLACE mode
+let &t_EI.="\e[2 q" "EI = NORMAL mode (ELSE)
+
+"Cursor settings:
+
+"  1 -> blinking block
+"  2 -> solid block 
+"  3 -> blinking underscore
+"  4 -> solid underscore
+"  5 -> blinking vertical bar
+"  6 -> solid vertical bar
+
+function Autocmd_set_fenc()
+	let fenc_bef = &fileencoding
+	if &fileencoding != "utf-8"
+		setlocal fileencoding=utf-8
+		unsilent echom ":w to rewrite as utf-8"
+	endif
+	return fenc_bef
+endfunction
+
+" en_US locale?
+language en_US
+
+" hybrid number numbers
+set number relativenumber
+
+" Spaces & Tabs
+set tabstop=4       " number of visual spaces per TAB
+set softtabstop=4   " number of spaces in tab when editing
+set shiftwidth=4    " number of spaces to use for autoindent
+"set expandtab       " tabs are space
+
+" https://www.zhihu.com/question/22363620/answer/21199296
+" last line seems is default to neovim but not vim 
+set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
+"set encoding=utf-8
+
+" some file on win10 display as unix but is dos
+if has("win32")
+	set fileformats=dos
+endif
+
+" don't generate those three types of files
+set nobackup
+set noswapfile
+set noundofile
+
+" set dir to current editing file's dir 
+set autochdir
+
+"call plug#begin()
+"Plug 'preservim/nerdtree'
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
+"Plug 'vim-airline/vim-airline' 
+"Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
+"call plug#end()
+
+" map ctrl+h/j/k/l to move between split windows
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" search case sensitive only if have uppercase
+set ignorecase
+set smartcase
+
+" default statusline:
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+
+set laststatus=2
+
+set statusline+=%<
+set statusline+=%f          " %F or 1CTRL+G to show full path
+set statusline+=\ %m
+set statusline+=%=
+set statusline+=\ %y
+"set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+"set statusline+=\ %{&fileencoding}
+set statusline+=\ %{fenc_bef?fenc_bef:&fileencoding}
+set statusline+=\ \[%{&fileformat}\]
+set statusline+=\ %-10.(%l,%c%V%)
+set statusline+=\ %P
+
+" moving in long line
+nnoremap k gk
+nnoremap j gj
+
+" always use system for ALL instead of use + and * operator?
+"set clipboard+=unnamedplus
+
+filetype plugin on  " seems needs this for autocmd FileType * to work? 
+
+" disable auto line break (tc) and insert comment (cro)
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=t
+
+" auto rewrite as utf-8 if not when :w
+"autocmd FileType * let fenc_bef = Autocmd_set_fenc()
