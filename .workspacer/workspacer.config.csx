@@ -36,9 +36,10 @@ Action<IConfigContext> doConfig = (context) =>
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Zoom"));
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Picture-in-Picture"));
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Wallpaper UI"));
-    // below two lines are from https://github.com/Zweihander-Main/zweidotfiles/blob/master/dot_workspacer/workspacer.config.csx
+
+    // https://github.com/Zweihander-Main/zweidotfiles/blob/master/dot_workspacer/workspacer.config.csx
 	context.WindowRouter.AddFilter(w => !w.Class.Equals("#32770")); // Deletion dialog
-    context.WindowRouter.AddFilter(w => !w.Class.Equals("OperationStatusWindow")); // Copying dialog
+	context.WindowRouter.AddFilter(w => !w.Class.Equals("OperationStatusWindow")); // Copying dialog
 
 	context.WorkspaceContainer.CreateWorkspaces("1", "2", "3", "4", "5");
 	context.WindowRouter.AddRoute(
