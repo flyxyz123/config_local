@@ -3,6 +3,11 @@
 #r "D:\Program Files\Scoop\apps\workspacer\current\plugins\workspacer.ActionMenu\workspacer.ActionMenu.dll"
 #r "D:\Program Files\Scoop\apps\workspacer\current\plugins\workspacer.FocusIndicator\workspacer.FocusIndicator.dll"
 
+//#r "G:\ComputerStudy\github\workspacer\src\workspacer\bin\Debug\net5.0-windows\win10-x64\workspacer.Shared.dll"
+//#r "G:\ComputerStudy\github\workspacer\src\workspacer\bin\Debug\net5.0-windows\win10-x64\plugins\workspacer.Bar\workspacer.Bar.dll"
+//#r "G:\ComputerStudy\github\workspacer\src\workspacer\bin\Debug\net5.0-windows\win10-x64\plugins\workspacer.ActionMenu\workspacer.ActionMenu.dll"
+//#r "G:\ComputerStudy\github\workspacer\src\workspacer\bin\Debug\net5.0-windows\win10-x64\plugins\workspacer.FocusIndicator\workspacer.FocusIndicator.dll"
+
 using System;
 using workspacer;
 using workspacer.Bar;
@@ -25,7 +30,7 @@ Action<IConfigContext> doConfig = (context) =>
 		Background = Color.Black,
 		LeftWidgets = () => new IBarWidget[] { new WorkspaceWidget(), new TextWidget(": "), new TitleWidget(){IsShortTitle = true} },
 		RightWidgets = () => new IBarWidget[] { new TimeWidget(1000, "ddd, M/dd/yyyy | h:mm tt"), new ActiveLayoutWidget() },
-	});	
+	});
 
 	context.AddFocusIndicator();
 
@@ -37,7 +42,7 @@ Action<IConfigContext> doConfig = (context) =>
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Picture-in-Picture"));
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Wallpaper UI"));
 
-    // https://github.com/Zweihander-Main/zweidotfiles/blob/master/dot_workspacer/workspacer.config.csx
+	// https://github.com/Zweihander-Main/zweidotfiles/blob/master/dot_workspacer/workspacer.config.csx
 	context.WindowRouter.AddFilter(w => !w.Class.Equals("#32770")); // Deletion dialog
 	context.WindowRouter.AddFilter(w => !w.Class.Equals("OperationStatusWindow")); // Copying dialog
 
@@ -55,7 +60,7 @@ Action<IConfigContext> doConfig = (context) =>
 		w => w.Title.Equals("netease cloud music unblocked") ?
 		context.WorkspaceContainer["5"] : null);
 
-	KeyModifiers mod = KeyModifiers.Alt;	
+	KeyModifiers mod = KeyModifiers.Alt;
 	context.Keybinds.Unsubscribe(mod | KeyModifiers.LShift, Keys.C);
 	context.Keybinds.Subscribe(mod, Keys.C, 
 		() => context.Workspaces.FocusedWorkspace.CloseFocusedWindow(),
