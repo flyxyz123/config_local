@@ -59,11 +59,15 @@ Action<IConfigContext> doConfig = (context) =>
 	context.WindowRouter.AddRoute(
 		w => w.Title.Equals("netease cloud music unblocked") ?
 		context.WorkspaceContainer["5"] : null);
+	context.WindowRouter.AddRoute(
+		w => w.ProcessFileName.Equals("HWiNFO64.EXE") ?
+		context.WorkspaceContainer["5"] : null);
 
-	KeyModifiers mod = KeyModifiers.Alt;
-	context.Keybinds.Unsubscribe(mod | KeyModifiers.LShift, Keys.C);
-	context.Keybinds.Subscribe(mod, Keys.C, 
-		() => context.Workspaces.FocusedWorkspace.CloseFocusedWindow(),
-		"close focused window");
+	//KeyModifiers mod = KeyModifiers.Alt;
+	//context.Keybinds.Unsubscribe(mod | KeyModifiers.LShift, Keys.C);
+	//context.Keybinds.Subscribe(mod, Keys.C, 
+	//	() => context.Workspaces.FocusedWorkspace.CloseFocusedWindow(),
+	//	"close focused window");
+
 };
 return doConfig;
