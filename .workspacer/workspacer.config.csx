@@ -1,12 +1,12 @@
-#r "D:\Program Files\Scoop\apps\workspacer\current\workspacer.Shared.dll"
-#r "D:\Program Files\Scoop\apps\workspacer\current\plugins\workspacer.Bar\workspacer.Bar.dll"
-#r "D:\Program Files\Scoop\apps\workspacer\current\plugins\workspacer.ActionMenu\workspacer.ActionMenu.dll"
-#r "D:\Program Files\Scoop\apps\workspacer\current\plugins\workspacer.FocusIndicator\workspacer.FocusIndicator.dll"
+//#r "D:\Program Files\Scoop\apps\workspacer\current\workspacer.Shared.dll"
+//#r "D:\Program Files\Scoop\apps\workspacer\current\plugins\workspacer.Bar\workspacer.Bar.dll"
+//#r "D:\Program Files\Scoop\apps\workspacer\current\plugins\workspacer.ActionMenu\workspacer.ActionMenu.dll"
+//#r "D:\Program Files\Scoop\apps\workspacer\current\plugins\workspacer.FocusIndicator\workspacer.FocusIndicator.dll"
 
-//#r "G:\ComputerStudy\github\workspacer\src\workspacer\bin\Debug\net5.0-windows\win10-x64\workspacer.Shared.dll"
-//#r "G:\ComputerStudy\github\workspacer\src\workspacer\bin\Debug\net5.0-windows\win10-x64\plugins\workspacer.Bar\workspacer.Bar.dll"
-//#r "G:\ComputerStudy\github\workspacer\src\workspacer\bin\Debug\net5.0-windows\win10-x64\plugins\workspacer.ActionMenu\workspacer.ActionMenu.dll"
-//#r "G:\ComputerStudy\github\workspacer\src\workspacer\bin\Debug\net5.0-windows\win10-x64\plugins\workspacer.FocusIndicator\workspacer.FocusIndicator.dll"
+#r "G:\ComputerStudy\github\workspacer\src\workspacer\bin\Release\net5.0-windows\win10-x64\workspacer.Shared.dll"
+#r "G:\ComputerStudy\github\workspacer\src\workspacer\bin\Release\net5.0-windows\win10-x64\plugins\workspacer.Bar\workspacer.Bar.dll"
+#r "G:\ComputerStudy\github\workspacer\src\workspacer\bin\Release\net5.0-windows\win10-x64\plugins\workspacer.ActionMenu\workspacer.ActionMenu.dll"
+#r "G:\ComputerStudy\github\workspacer\src\workspacer\bin\Release\net5.0-windows\win10-x64\plugins\workspacer.FocusIndicator\workspacer.FocusIndicator.dll"
 
 using System;
 using workspacer;
@@ -36,9 +36,6 @@ Action<IConfigContext> doConfig = (context) =>
 
 	var actionMenu = context.AddActionMenu();
 
-	// https://github.com/rickbutton/workspacer/pull/189
-	// Snip & Sketch can be used as normal with Win+Shift+S
-	context.WindowRouter.AddFilter(w => !w.ProcessName.Equals("ScreenClippingHost"));
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Steam"));
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Zoom"));
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Picture-in-Picture"));
