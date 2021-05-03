@@ -35,13 +35,14 @@ Action<IConfigContext> doConfig = (context) =>
 	context.AddFocusIndicator();
 
 	var actionMenu = context.AddActionMenu();
-	
-	context.WindowRouter.AddFilter(w => !w.Title.Contains("Snip"));
+
+	// https://github.com/rickbutton/workspacer/pull/189
+	// Snip & Sketch can be used as normal with Win+Shift+S
+	context.WindowRouter.AddFilter(w => !w.ProcessName.Equals("ScreenClippingHost"));
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Steam"));
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Zoom"));
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Picture-in-Picture"));
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Wallpaper UI"));
-
 	// https://github.com/Zweihander-Main/zweidotfiles/blob/master/dot_workspacer/workspacer.config.csx
 	context.WindowRouter.AddFilter(w => !w.Class.Equals("#32770")); // Deletion dialog
 	context.WindowRouter.AddFilter(w => !w.Class.Equals("OperationStatusWindow")); // Copying dialog
