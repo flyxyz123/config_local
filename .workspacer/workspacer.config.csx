@@ -33,8 +33,7 @@ Action<IConfigContext> doConfig = (context) =>
 	});
 
 	context.AddFocusIndicator();
-
-	var actionMenu = context.AddActionMenu();
+	//var actionMenu = context.AddActionMenu();
 
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Steam"));
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Zoom"));
@@ -53,6 +52,9 @@ Action<IConfigContext> doConfig = (context) =>
 		context.WorkspaceContainer["4"] : null);
 	context.WindowRouter.AddRoute(
 		w => w.ProcessFileName.Equals("cloudmusic.exe") ?
+		context.WorkspaceContainer["4"] : null);
+	context.WindowRouter.AddRoute(
+		w => w.ProcessFileName.Equals("TTKService.exe") ?
 		context.WorkspaceContainer["4"] : null);
 	context.WindowRouter.AddRoute(
 		w => w.Title.Equals("netease cloud music unblocked") ?
