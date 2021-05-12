@@ -35,8 +35,8 @@ Action<IConfigContext> doConfig = (context) =>
 	context.AddFocusIndicator();
 	//var actionMenu = context.AddActionMenu();
 
-	context.WindowRouter.AddFilter(w => !w.Title.Contains("Steam"));
-	context.WindowRouter.AddFilter(w => !w.Title.Contains("Zoom"));
+	context.WindowRouter.AddFilter(w => !w.ProcessName.Contains("steam"));
+	context.WindowRouter.AddFilter(w => !w.ProcessFileName.Equals("Zoom.exe"));
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Picture-in-Picture"));
 	context.WindowRouter.AddFilter(w => !w.Title.Contains("Wallpaper UI"));
 	// https://github.com/Zweihander-Main/zweidotfiles/blob/master/dot_workspacer/workspacer.config.csx
