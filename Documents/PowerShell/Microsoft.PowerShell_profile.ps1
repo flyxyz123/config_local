@@ -4,6 +4,8 @@ if (Test-Path($ChocolateyProfile)) {
     Import-Module "$ChocolateyProfile"
 }
 
+Set-Alias -Name ll -Value Get-ChildItem
+
 # config local only for win10
 Function cfgl {
     git --git-dir=G:\ComputerStudy\configs\.mycfg_local\ --work-tree=$HOME\ $args
