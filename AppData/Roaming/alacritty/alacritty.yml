@@ -13,6 +13,12 @@ cursor:
   style:
     shape: Beam
 
+# workaround when using workspacer window manager, start neovim will only show size before window manager resize, which is much smaller
+window:
+  position:
+    x: 1
+    y: 1
+
 # don't use bash as defult shell on windows, / and \ directory conflict is insane, use powershell 
 #shell:
 ##  program: D:\Program Files\Scoop\apps\git\2.30.1.windows.1\bin\bash.exe
