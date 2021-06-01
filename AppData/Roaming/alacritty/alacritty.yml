@@ -9,6 +9,10 @@ shell:
 font:
   size: 13
 
+cursor:
+  style:
+    shape: Beam
+
 # don't use bash as defult shell on windows, / and \ directory conflict is insane, use powershell 
 #shell:
 ##  program: D:\Program Files\Scoop\apps\git\2.30.1.windows.1\bin\bash.exe
