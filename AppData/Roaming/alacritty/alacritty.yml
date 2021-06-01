@@ -15,9 +15,7 @@ cursor:
 
 # workaround when using workspacer window manager, start neovim will only show size before window manager resize, which is much smaller
 window:
-  position:
-    x: 1
-    y: 1
+  startup_mode: Maximized
 
 # don't use bash as defult shell on windows, / and \ directory conflict is insane, use powershell 
 #shell:
