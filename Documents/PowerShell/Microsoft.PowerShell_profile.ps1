@@ -45,3 +45,17 @@ function cd($target)
 # it causes problem when use winfetch to check number of packages
 # https://github.com/shilangyu/scoop-search 
 Invoke-Expression (&scoop-search --hook)
+
+Set-PSReadLineOption -EditMode Vi
+
+# https://docs.microsoft.com/en-us/powershell/module/psreadline/set-psreadlineoption?view=powershell-7.1#example-6--use-vimodechangehandler-to-display-vi-mode-changes
+function OnViModeChange {
+    if ($args[0] -eq 'Command') {
+        # Set the cursor to a block.
+        Write-Host -NoNewLine "`e[2 q"
+    } else {
+        # Set the cursor to a line.
+        Write-Host -NoNewLine "`e[6 q"
+    }
+}
+Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange

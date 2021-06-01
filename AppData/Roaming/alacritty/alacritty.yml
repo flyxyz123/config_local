@@ -1,13 +1,13 @@
 import:
-    - ~\.config\alacritty\alacritty.yml
+  - ~\.config\alacritty\alacritty.yml
 
 shell:
-    program: D:\Program Files\Scoop\apps\pwsh\current\pwsh.exe 
-    args:
-        - --login
+  program: D:\Program Files\Scoop\apps\pwsh\current\pwsh.exe 
+  args:
+    - --login
 
 font:
-    size: 13
+  size: 13
 
 # don't use bash as defult shell on windows, / and \ directory conflict is insane, use powershell 
 #shell:
