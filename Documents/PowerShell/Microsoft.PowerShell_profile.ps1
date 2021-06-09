@@ -60,6 +60,9 @@ function OnViModeChange {
 }
 Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
 
+# an easilier approach compare to above, but not working, seems like a bug, see notes about this bug and link to github issue
+#Set-PSReadLineOption -ViModeIndicator Cursor
+
 Import-Module -Name PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 Set-PsFzfOption -TabExpansion
