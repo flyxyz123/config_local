@@ -23,13 +23,13 @@ Action<IConfigContext> doConfig = (context) =>
 	context.AddBar(new BarPluginConfig()
 	{
 		BarTitle = "workspacer.Bar",
-		BarHeight = 18,
+		BarHeight = 22,
 		FontSize = 10,
 		DefaultWidgetForeground = Color.White,
 		DefaultWidgetBackground = Color.Black,
 		Background = Color.Black,
-		LeftWidgets = () => new IBarWidget[] { new WorkspaceWidget(), new TextWidget(": "), new TitleWidget(){IsShortTitle = true} },
-		RightWidgets = () => new IBarWidget[] { new TimeWidget(1000, "ddd MM/dd HH:mm |"), new BatteryWidget(), new ActiveLayoutWidget() },
+		LeftWidgets = () => new IBarWidget[] { new WorkspaceWidget(), new ActiveLayoutWidget(), new TitleWidget(){IsShortTitle = true} },
+		RightWidgets = () => new IBarWidget[] { new TimeWidget(1000, "ddd MM/dd HH:mm |"), new BatteryWidget() },
 	});
 
 	context.AddFocusIndicator();
