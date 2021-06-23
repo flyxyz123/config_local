@@ -29,7 +29,7 @@ Action<IConfigContext> doConfig = (context) =>
 		DefaultWidgetBackground = Color.Black,
 		Background = Color.Black,
 		LeftWidgets = () => new IBarWidget[] { new WorkspaceWidget(), new TextWidget(": "), new TitleWidget(){IsShortTitle = true} },
-		RightWidgets = () => new IBarWidget[] { new TimeWidget(1000, "ddd, M/dd/yyyy | h:mm tt |"), new BatteryWidget(), new ActiveLayoutWidget() },
+		RightWidgets = () => new IBarWidget[] { new TimeWidget(1000, "ddd MM/dd HH:mm |"), new BatteryWidget(), new ActiveLayoutWidget() },
 	});
 
 	context.AddFocusIndicator();
