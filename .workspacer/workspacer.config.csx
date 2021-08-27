@@ -44,7 +44,7 @@ Action<IConfigContext> doConfig = (context) =>
 	context.WindowRouter.AddFilter(w => !w.Class.Equals("#32770")); // Deletion dialog
 	context.WindowRouter.AddFilter(w => !w.Class.Equals("OperationStatusWindow")); // Copying dialog
 
-	context.WorkspaceContainer.CreateWorkspaces("1", "2", "3", "4", "5");
+	context.WorkspaceContainer.CreateWorkspaces("1","2","3","4","5","6","7","8","9");
 	context.WindowRouter.AddRoute(
 		w => w.Title.Contains("VLC media player") ? 
 		context.WorkspaceContainer["4"] : null);
